@@ -13,7 +13,7 @@ import java.util.Optional;
 
 /**
  * This class uses a map internally.  <br/>
- * TODO: Implement a persistence layer that actually saves that data between executions
+ * TODO: Implement a persistence layer that actually saves the data between executions
  */
 @Component("TaskDao")
 public class TaskDao implements DAO<Task> {
