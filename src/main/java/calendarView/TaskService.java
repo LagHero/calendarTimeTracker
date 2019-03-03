@@ -3,11 +3,13 @@ package calendarView;
 import calendarView.dataModel.Day;
 import calendarView.dataModel.Task;
 import com.google.common.collect.Lists;
+import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+@Component("TaskService")
 public class TaskService implements ITaskService {
 
     @Override
@@ -20,15 +22,13 @@ public class TaskService implements ITaskService {
 
         Calendar testCal = Calendar.getInstance();
         testCal.clear();
-        testCal.set(2019, 3, 1);
+        testCal.set(2019, Calendar.APRIL, 1);
         Date testDate = testCal.getTime();
 
-        testCal.clear();
         testCal.set(Calendar.HOUR_OF_DAY, 9);
         testCal.set(Calendar.MINUTE, 30);
         Date testStartTime = testCal.getTime();
 
-        testCal.clear();
         testCal.set(Calendar.HOUR_OF_DAY, 11);
         testCal.set(Calendar.MINUTE, 15);
         Date testEndTime = testCal.getTime();
@@ -37,12 +37,10 @@ public class TaskService implements ITaskService {
         List<Day> days = Lists.newArrayList();
         List<Task> assignments = Lists.newArrayList();
 
-        Date startTime = testStartTime;
-        Date endTime = testEndTime;
         String name = "name";
         String client = "client";
         String project = "project";
-        assignments.add(new Task(1, startTime, endTime, name, client, project));
+        assignments.add(new Task(1, testStartTime, testEndTime, name, client, project));
         days.add(new Day(testDate, assignments));
         return days;
     }

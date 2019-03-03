@@ -2,19 +2,21 @@ package calendarView;
 
 import calendarView.dataModel.Day;
 import calendarView.dataModel.Task;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
+@Component("ITaskService")
 public interface ITaskService {
 
-    public Task find(int id);
+    Task find(int id);
 
-    public List<Day> find(Date startDate, Date endDate);
+    List<Day> find(Date startDate, Date endDate);
 
-    public int create(Task task);
+    int create(Task task);
 
-    public void update(Task task);
+    void update(Task task);
 
-    public void delete(int id);
+    void delete(int id);
 }
