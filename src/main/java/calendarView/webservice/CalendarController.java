@@ -64,7 +64,7 @@ public class CalendarController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable("id") Integer id, @RequestBody Task task) {
         RestPreconditions.checkNotNull(task, MISSING_TASK);
-        RestPreconditions.checkArgument(id == task.getId(), String.format(ID_TASK_MISMATCH));
+        RestPreconditions.checkArgument(id.equals(task.getId()), ID_TASK_MISMATCH);
         RestPreconditions.checkNotFound(taskService.find(id), String.format(TASK_NOT_FOUND_FOR_ID, id));
         LocalTime startDate = task.getStartTime();
         LocalTime endDate = task.getEndTime();

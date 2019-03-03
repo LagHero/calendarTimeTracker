@@ -30,12 +30,7 @@ public class TaskService implements ITaskService {
         List<Day> days = Lists.newArrayList();
         while (!dayIndex.isAfter(endDate)) {
             List<Task> tasks = Lists.newArrayList(taskDao.getAll(dayIndex));
-            tasks.sort(new Comparator<Task>() {
-                @Override
-                public int compare(Task o1, Task o2) {
-                    return o1.getStartTime().compareTo(o2.getStartTime());
-                }
-            });
+            tasks.sort(Comparator.comparing(Task::getStartTime));
             days.add(new Day(dayIndex, tasks));
 
             // Increment the day index
@@ -79,8 +74,6 @@ public class TaskService implements ITaskService {
     @Override
     public void delete(Integer id) {
         Optional<Task> optionalTask = taskDao.get(id);
-        if (optionalTask.isPresent()) {
-            taskDao.delete(optionalTask.get());
-        }
+        optionalTask.ifPresent(task -> taskDao.delete(task));
     }
 }
