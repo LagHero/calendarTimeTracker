@@ -1,9 +1,5 @@
 package calendarView.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class RestPreconditions {
 
 
@@ -20,18 +16,9 @@ public class RestPreconditions {
         }
     }
 
-    public static <T> void checkArgument(boolean expression, String errorMessage) {
+    public static void checkArgument(boolean expression, String errorMessage) {
         if (!expression) {
             throw new BadRequestException(errorMessage);
-        }
-    }
-
-    public static Date parseDate(String stringDate, String dateFormat, String errorMessage) {
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-        try {
-            return sdf.parse(stringDate);
-        } catch (ParseException e) {
-            throw new BadRequestException(errorMessage, e);
         }
     }
 }
