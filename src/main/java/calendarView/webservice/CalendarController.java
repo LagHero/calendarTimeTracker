@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/task")
-public class CalendarController {
+public class CalendarController extends BaseController {
 
     private static final String TASK_NOT_FOUND_FOR_ID = "Unable to find a task for the ID: '%s'";
     private static final String TASKS_NOT_FOUND_FOR_DATE_RANGE = "Unable to find a task for startDate: '%s' , and endDate: '%s'";
